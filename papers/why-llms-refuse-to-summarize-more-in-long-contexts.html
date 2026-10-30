@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why LLMs Refuse to Summarize More in Long Contexts?</title>
+<meta name="description" content="Long-horizon agents routinely exceed their context windows. A common form of context compaction that reduces a long interaction history to a smaller representation is to summarize the history and continue from the summary. This summarization loses information, and this loss is a common source of age">
+<link rel="canonical" href="https://musacim.github.io/papers/papers/why-llms-refuse-to-summarize-more-in-long-contexts.html">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="citation_title" content="Why LLMs Refuse to Summarize More in Long Contexts?">
+<meta name="citation_author" content="Musa Cim">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_author" content="Burak Topcu">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_author" content="Mahmut Taylan Kandemir">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_publication_date" content="2026/10/21">
+<meta name="citation_online_date" content="2026/10/21">
+<meta name="citation_doi" content="10.6084/m9.figshare.34792233">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="large language models; summarization; context compaction; long context; LLM agents">
+<meta name="citation_abstract" content="Long-horizon agents routinely exceed their context windows. A common form of context compaction that reduces a long interaction history to a smaller representation is to summarize the history and continue from the summary. This summarization loses information, and this loss is a common source of agent failures: forgotten details are rediscovered at extra cost or silently dropped. The natural repair is to ask for a longer summary, so we investigate whether that option actually works. Does summary length grow with input length? Across eleven models spanning coder, general-purpose, and reasoning families, summary length grows far more slowly than the input, so at 100k tokens, less than one percent of the input survives on both long documents and real agent trajectories. Furthermore, prompt-level directives do not close this gap: explicit length directives raise output only modestly, and the summary length plateaus far below the requested amount, however the request is phrased. To test whether training data can move this ceiling, we lightly fine-tune two models on summaries that differ only in length. The resulting output length shifts dramatically in either direction, tracking the fine-tuning summary length, even under a prompt that never mentions length. Consequently, this paper shows that summary length grows strongly sublinearly with input size, is only weakly responsive to length directives in the prompt, and is strongly responsive to fine-tuning, suggesting that training data, rather than the prompt, is the effective lever.">
+<meta name="citation_abstract_html_url" content="https://musacim.github.io/papers/papers/why-llms-refuse-to-summarize-more-in-long-contexts.html">
+<meta name="citation_pdf_url" content="https://musacim.github.io/papers/papers/why-llms-refuse-to-summarize-more-in-long-contexts.pdf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why LLMs Refuse to Summarize More in Long Contexts?">
+<meta property="og:url" content="https://musacim.github.io/papers/papers/why-llms-refuse-to-summarize-more-in-long-contexts.html">
+</head>
+<body>
+<header class="site"><a href="../index.html">Musa Cim &middot; Research Papers</a></header>
+<main>
+<article class="paper">
+<h1>Why LLMs Refuse to Summarize More in Long Contexts?</h1>
+<p class="authors">Musa Cim, Burak Topcu, Mahmut Taylan Kandemir</p>
+<p class="affil">The Pennsylvania State University</p>
+<p class="meta">2026-10-21</p>
+<p class="links"><a href="../papers/why-llms-refuse-to-summarize-more-in-long-contexts.pdf">PDF</a> &middot; <a href="https://github.com/musacim/long-context-summarization">Code</a></p>
+<h2>Abstract</h2>
+<p class="abstract">Long-horizon agents routinely exceed their context windows. A common form of context compaction that reduces a long interaction history to a smaller representation is to summarize the history and continue from the summary. This summarization loses information, and this loss is a common source of agent failures: forgotten details are rediscovered at extra cost or silently dropped. The natural repair is to ask for a longer summary, so we investigate whether that option actually works. Does summary length grow with input length? Across eleven models spanning coder, general-purpose, and reasoning families, summary length grows far more slowly than the input, so at 100k tokens, less than one percent of the input survives on both long documents and real agent trajectories. Furthermore, prompt-level directives do not close this gap: explicit length directives raise output only modestly, and the summary length plateaus far below the requested amount, however the request is phrased. To test whether training data can move this ceiling, we lightly fine-tune two models on summaries that differ only in length. The resulting output length shifts dramatically in either direction, tracking the fine-tuning summary length, even under a prompt that never mentions length. Consequently, this paper shows that summary length grows strongly sublinearly with input size, is only weakly responsive to length directives in the prompt, and is strongly responsive to fine-tuning, suggesting that training data, rather than the prompt, is the effective lever.</p>
+<p class="keywords"><strong>Keywords:</strong> large language models, summarization, context compaction, long context, LLM agents</p>
+<p class="back"><a href="../index.html">&larr; All papers</a></p>
+</article>
+</main>
+<footer class="site">&copy; Musa Cim</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

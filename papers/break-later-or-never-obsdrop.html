@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Break Later or Never: Prefix-Preserving Context Compaction for Coding Agents</title>
+<meta name="description" content="Coding agents repeatedly invoke LLMs over growing, largely append-only histories (each request repeats the previous one and appends a new turn), making them natural beneficiaries of prefix caching. Yet the context compaction used to control this growth can undermine that benefit: rewriting earlier t">
+<link rel="canonical" href="https://musacim.github.io/papers/papers/break-later-or-never-obsdrop.html">
+<link rel="stylesheet" href="../assets/style.css">
+<meta name="citation_title" content="Break Later or Never: Prefix-Preserving Context Compaction for Coding Agents">
+<meta name="citation_author" content="Musa Cim">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_author" content="Burak Topcu">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_author" content="Mahmut Taylan Kandemir">
+<meta name="citation_author_institution" content="The Pennsylvania State University">
+<meta name="citation_publication_date" content="2026/10/01">
+<meta name="citation_online_date" content="2026/10/01">
+<meta name="citation_doi" content="10.6084/m9.figshare.34791231">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="LLM serving; prefix caching; KV cache; LLM agents; context management; performance characterization; coding agents; SWE-bench">
+<meta name="citation_abstract" content="Coding agents repeatedly invoke LLMs over growing, largely append-only histories (each request repeats the previous one and appends a new turn), making them natural beneficiaries of prefix caching. Yet the context compaction used to control this growth can undermine that benefit: rewriting earlier tokens invalidates reusable prefix KV and forces a costly re-prefill of the suffix (i.e., recomputing the KV of every token after the edit). We characterize this interaction across two models and two SWE-bench variants, finding that uncompacted agent trajectories achieve 98 to 99% prefix-cache reuse and that tool observations (e.g., file views and test logs) account for the largest share of context cost. As a simple prompt-level mitigation, batched observation masking (masking old observations once every few steps instead of every step) preserves 95 to 98% prefix reuse while reducing context length by up to 50%, serving cost by up to 18%, and task completion time by up to 21%. We then present ObsDrop, which moves compaction from the prompt into the KV cache: stale tool-observation KV is released while the logical token prefix remains unchanged, preserving prefix matching while reducing KV residency and attention work. We implement ObsDrop in SGLang and Sparse-vLLM and evaluate it across multiple attention backends and concurrent agent workloads. ObsDrop maintains task quality while improving cache residency, throughput, and tail latency under memory pressure. Its benefits grow with concurrency and KV pressure, reaching 2.45 to 2.85× higher throughput with FlashInfer (and up to 5.37× with the Triton backend under peak load), relative to no compaction. Our results show that effective context management for agents benefits from considering not only which tokens are retained but also how compaction interacts with the serving system.">
+<meta name="citation_abstract_html_url" content="https://musacim.github.io/papers/papers/break-later-or-never-obsdrop.html">
+<meta name="citation_pdf_url" content="https://musacim.github.io/papers/papers/break-later-or-never-obsdrop.pdf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Break Later or Never: Prefix-Preserving Context Compaction for Coding Agents">
+<meta property="og:url" content="https://musacim.github.io/papers/papers/break-later-or-never-obsdrop.html">
+</head>
+<body>
+<header class="site"><a href="../index.html">Musa Cim &middot; Research Papers</a></header>
+<main>
+<article class="paper">
+<h1>Break Later or Never: Prefix-Preserving Context Compaction for Coding Agents</h1>
+<p class="authors">Musa Cim, Burak Topcu, Mahmut Taylan Kandemir</p>
+<p class="affil">The Pennsylvania State University</p>
+<p class="meta">2026-10-01</p>
+<p class="links"><a href="../papers/break-later-or-never-obsdrop.pdf">PDF</a> &middot; <a href="https://github.com/musacim/ObsDrop">Code</a></p>
+<h2>Abstract</h2>
+<p class="abstract">Coding agents repeatedly invoke LLMs over growing, largely append-only histories (each request repeats the previous one and appends a new turn), making them natural beneficiaries of prefix caching. Yet the context compaction used to control this growth can undermine that benefit: rewriting earlier tokens invalidates reusable prefix KV and forces a costly re-prefill of the suffix (i.e., recomputing the KV of every token after the edit). We characterize this interaction across two models and two SWE-bench variants, finding that uncompacted agent trajectories achieve 98 to 99% prefix-cache reuse and that tool observations (e.g., file views and test logs) account for the largest share of context cost. As a simple prompt-level mitigation, batched observation masking (masking old observations once every few steps instead of every step) preserves 95 to 98% prefix reuse while reducing context length by up to 50%, serving cost by up to 18%, and task completion time by up to 21%. We then present ObsDrop, which moves compaction from the prompt into the KV cache: stale tool-observation KV is released while the logical token prefix remains unchanged, preserving prefix matching while reducing KV residency and attention work. We implement ObsDrop in SGLang and Sparse-vLLM and evaluate it across multiple attention backends and concurrent agent workloads. ObsDrop maintains task quality while improving cache residency, throughput, and tail latency under memory pressure. Its benefits grow with concurrency and KV pressure, reaching 2.45 to 2.85× higher throughput with FlashInfer (and up to 5.37× with the Triton backend under peak load), relative to no compaction. Our results show that effective context management for agents benefits from considering not only which tokens are retained but also how compaction interacts with the serving system.</p>
+<p class="keywords"><strong>Keywords:</strong> LLM serving, prefix caching, KV cache, LLM agents, context management, performance characterization, coding agents, SWE-bench</p>
+<p class="back"><a href="../index.html">&larr; All papers</a></p>
+</article>
+</main>
+<footer class="site">&copy; Musa Cim</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

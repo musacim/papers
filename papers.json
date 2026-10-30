@@ -1,0 +1,83 @@
+{
+  "site": {
+    "title": "Research Papers",
+    "author": "Musa Cim",
+    "description": "Research papers by Musa Cim, The Pennsylvania State University.",
+    "base_url": "https://musacim.github.io/papers"
+  },
+  "papers": [
+    {
+      "slug": "break-later-or-never-obsdrop",
+      "title": "Break Later or Never: Prefix-Preserving Context Compaction for Coding Agents",
+      "authors": [
+        "Musa Cim",
+        "Burak Topcu",
+        "Mahmut Taylan Kandemir"
+      ],
+      "institution": "The Pennsylvania State University",
+      "date": "2026-10-01",
+      "pdf": "papers/break-later-or-never-obsdrop.pdf",
+      "status": "Preprint",
+      "doi": "10.6084/m9.figshare.34791231",
+      "code": "https://github.com/musacim/ObsDrop",
+      "keywords": [
+        "LLM serving",
+        "prefix caching",
+        "KV cache",
+        "LLM agents",
+        "context management",
+        "performance characterization",
+        "coding agents",
+        "SWE-bench"
+      ],
+      "abstract": "Coding agents repeatedly invoke LLMs over growing, largely append-only histories (each request repeats the previous one and appends a new turn), making them natural beneficiaries of prefix caching. Yet the context compaction used to control this growth can undermine that benefit: rewriting earlier tokens invalidates reusable prefix KV and forces a costly re-prefill of the suffix (i.e., recomputing the KV of every token after the edit). We characterize this interaction across two models and two SWE-bench variants, finding that uncompacted agent trajectories achieve 98 to 99% prefix-cache reuse and that tool observations (e.g., file views and test logs) account for the largest share of context cost. As a simple prompt-level mitigation, batched observation masking (masking old observations once every few steps instead of every step) preserves 95 to 98% prefix reuse while reducing context length by up to 50%, serving cost by up to 18%, and task completion time by up to 21%. We then present ObsDrop, which moves compaction from the prompt into the KV cache: stale tool-observation KV is released while the logical token prefix remains unchanged, preserving prefix matching while reducing KV residency and attention work. We implement ObsDrop in SGLang and Sparse-vLLM and evaluate it across multiple attention backends and concurrent agent workloads. ObsDrop maintains task quality while improving cache residency, throughput, and tail latency under memory pressure. Its benefits grow with concurrency and KV pressure, reaching 2.45 to 2.85× higher throughput with FlashInfer (and up to 5.37× with the Triton backend under peak load), relative to no compaction. Our results show that effective context management for agents benefits from considering not only which tokens are retained but also how compaction interacts with the serving system."
+    },
+    {
+      "slug": "human-ai-collaboration-needs-synchronization",
+      "title": "Human-AI Collaboration Needs Synchronization",
+      "authors": [
+        "Musa Cim",
+        "Burak Topcu",
+        "Mahmut Taylan Kandemir"
+      ],
+      "institution": "The Pennsylvania State University",
+      "date": "2026-10-26",
+      "pdf": "papers/human-ai-collaboration-needs-synchronization.pdf",
+      "status": "Preprint",
+      "doi": "10.6084/m9.figshare.34792248",
+      "keywords": [
+        "large language models",
+        "human-AI collaboration",
+        "safety and trustworthiness",
+        "interpretability",
+        "social impact",
+        "language comprehension",
+        "evaluation and benchmarking"
+      ],
+      "abstract": "AI systems are evaluated, trained, and deployed as if they were solo performers, even when humans collaborate with them. Yet every deployment places a machine operating at thousands of tokens per second alongside a human processing roughly ten bits per second, across a communication channel with limited pacing, weak shared-state mechanisms, and limited means for either party to verify the other’s understanding. This position paper argues that the resulting failures, cognitive overload on the human side, silent drift on the AI side, and an accountability gap that neither party can close, are not only failures of model capability but also failures of an undesigned channel. We contrast the human-to-AI channel with the human-to-human and AI-to-AI channels, show that it lacks many of the robust coordination mechanisms available in the other two channels, and document how it breaks down from both ends. We argue that the channel itself must become a first-class research object, with evaluation, training, and interaction protocols engineered specifically for it. Without intervention at the channel level, improvements in model capability will continue to widen the gap between what AI produces and what humans can meaningfully account for."
+    },
+    {
+      "slug": "why-llms-refuse-to-summarize-more-in-long-contexts",
+      "title": "Why LLMs Refuse to Summarize More in Long Contexts?",
+      "authors": [
+        "Musa Cim",
+        "Burak Topcu",
+        "Mahmut Taylan Kandemir"
+      ],
+      "institution": "The Pennsylvania State University",
+      "date": "2026-10-21",
+      "pdf": "papers/why-llms-refuse-to-summarize-more-in-long-contexts.pdf",
+      "status": "Preprint",
+      "doi": "10.6084/m9.figshare.34792233",
+      "code": "https://github.com/musacim/long-context-summarization",
+      "keywords": [
+        "large language models",
+        "summarization",
+        "context compaction",
+        "long context",
+        "LLM agents"
+      ],
+      "abstract": "Long-horizon agents routinely exceed their context windows. A common form of context compaction that reduces a long interaction history to a smaller representation is to summarize the history and continue from the summary. This summarization loses information, and this loss is a common source of agent failures: forgotten details are rediscovered at extra cost or silently dropped. The natural repair is to ask for a longer summary, so we investigate whether that option actually works. Does summary length grow with input length? Across eleven models spanning coder, general-purpose, and reasoning families, summary length grows far more slowly than the input, so at 100k tokens, less than one percent of the input survives on both long documents and real agent trajectories. Furthermore, prompt-level directives do not close this gap: explicit length directives raise output only modestly, and the summary length plateaus far below the requested amount, however the request is phrased. To test whether training data can move this ceiling, we lightly fine-tune two models on summaries that differ only in length. The resulting output length shifts dramatically in either direction, tracking the fine-tuning summary length, even under a prompt that never mentions length. Consequently, this paper shows that summary length grows strongly sublinearly with input size, is only weakly responsive to length directives in the prompt, and is strongly responsive to fine-tuning, suggesting that training data, rather than the prompt, is the effective lever."
+    }
+  ]
+}
